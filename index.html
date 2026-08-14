@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FORTREX — Something Big Is Coming</title>
-<meta name="description" content="The edge you've been looking for. Exclusive. Verified. Built for traders who refuse to settle.">
+<title>FORTREX — Something Is Coming</title>
+<meta name="description" content="Something is coming for traders. The only question is whether you'll be inside when it opens.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -13,8 +13,8 @@
   --gold-light: #FFF8DC;
   --gold-deep: #B8860B;
   --bg: #050507;
-  --surface: #0A0A12;
-  --surface-2: #12121E;
+  --surface: rgba(10,10,18,0.8);
+  --surface-2: rgba(18,18,30,0.9);
   --border: rgba(212,175,55,0.12);
   --border-bright: rgba(212,175,55,0.3);
   --text: #FFFFFF;
@@ -25,6 +25,7 @@ html { scroll-behavior: smooth; }
 body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; line-height: 1.6; }
 a { text-decoration: none; color: inherit; }
 img { max-width: 100%; display: block; }
+input, select { font-family: inherit; }
 
 /* === PARTICLE CANVAS === */
 #goldParticles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
@@ -40,7 +41,7 @@ img { max-width: 100%; display: block; }
 
 /* === NAV WITH LOGO FLIP === */
 nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 16px 32px; transition: all 0.3s; border-bottom: 1px solid transparent; }
-nav.scrolled { background: rgba(5,5,7,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+nav.scrolled { background: rgba(5,5,7,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
 .logo { font-size: 20px; font-weight: 800; letter-spacing: -0.02em; display: flex; align-items: center; gap: 10px; color: var(--text); position: relative; }
 .logo-img-wrapper { position: relative; perspective: 200px; }
 .logo-img { width: 38px; height: 38px; border-radius: 8px; object-fit: cover; box-shadow: 0 2px 16px rgba(255,215,0,0.3), 0 0 0 1px rgba(255,175,55,0.1); transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s, filter 0.4s; will-change: transform; }
@@ -52,7 +53,7 @@ nav.scrolled { background: rgba(5,5,7,0.85); backdrop-filter: blur(20px); border
 @keyframes logoRing { 0% { opacity: 0.8; transform: translateY(-50%) scale(1); box-shadow: 0 0 0 0 rgba(255,215,0,0.5); } 100% { opacity: 0; transform: translateY(-50%) scale(2.5); box-shadow: 0 0 0 8px rgba(255,215,0,0); } }
 .logo-glow { position: absolute; left: -5px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 12px; pointer-events: none; background: radial-gradient(circle, rgba(255,215,0,0.3), transparent 70%); opacity: 0; transition: opacity 0.4s; }
 .logo:hover .logo-glow { opacity: 1; }
-.nav-cta { padding: 8px 20px; border-radius: 50px; border: 1px solid var(--gold); color: var(--gold); font-size: 14px; font-weight: 600; transition: all 0.2s; }
+.nav-cta { padding: 8px 20px; border-radius: 50px; border: 1px solid var(--gold); color: var(--gold); font-size: 14px; font-weight: 600; transition: all 0.2s; cursor: pointer; }
 .nav-cta:hover { background: var(--gold); color: var(--bg); box-shadow: 0 0 20px rgba(212,175,55,0.3); }
 
 /* === HERO === */
@@ -63,9 +64,9 @@ nav.scrolled { background: rgba(5,5,7,0.85); backdrop-filter: blur(20px); border
 @keyframes pulse { 0%,100% { border-color: var(--border-bright); box-shadow: 0 0 0 0 rgba(212,175,55,0.1); } 50% { border-color: var(--gold); box-shadow: 0 0 20px rgba(212,175,55,0.15); } }
 .hero-logo { width: 100px; height: 100px; border-radius: 20px; margin-bottom: 36px; box-shadow: 0 0 60px rgba(212,175,55,0.15); animation: float 4s ease-in-out infinite; }
 @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-.hero h1 { font-size: clamp(32px, 6.5vw, 64px); font-weight: 900; letter-spacing: -0.03em; line-height: 1.08; margin-bottom: 16px; max-width: 700px; }
+.hero h1 { font-size: clamp(32px, 6.5vw, 64px); font-weight: 900; letter-spacing: -0.03em; line-height: 1.08; margin-bottom: 16px; max-width: 720px; }
 .hero h1 .gold { background: linear-gradient(135deg, #B8860B 0%, #D4AF37 40%, #FFF8DC 60%, #D4AF37 80%, #B8860B 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.hero-sub { font-size: clamp(15px, 2vw, 18px); color: var(--text-muted); max-width: 480px; margin-bottom: 36px; }
+.hero-sub { font-size: clamp(15px, 2vw, 18px); color: var(--text-muted); max-width: 520px; margin-bottom: 36px; }
 .hero-cta-row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
 
 /* === CTA BUTTONS === */
@@ -82,14 +83,14 @@ nav.scrolled { background: rgba(5,5,7,0.85); backdrop-filter: blur(20px); border
 .crown-divider svg { width: 28px; height: 28px; opacity: 0.5; }
 
 /* === LIVE REGISTRATION BOARD === */
-.live-board { position: relative; z-index: 2; max-width: 600px; margin: 0 auto; padding: 0 24px 40px; }
+.live-board { position: relative; z-index: 2; max-width: 580px; margin: 0 auto; padding: 0 24px 40px; }
 .live-board-header { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 24px; }
 .live-board-header .dot { width: 10px; height: 10px; border-radius: 50%; background: #00C853; animation: blink 1.5s infinite; }
 .live-board-header h3 { font-size: 14px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
 .live-count { text-align: center; margin-bottom: 24px; }
 .live-count .num { font-size: 48px; font-weight: 900; background: linear-gradient(135deg, #D4AF37, #FFF8DC); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .live-count .label { font-size: 13px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; }
-.live-feed { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+.live-feed { background: var(--surface); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
 .live-feed-item { display: flex; align-items: center; gap: 12px; padding: 14px 18px; border-bottom: 1px solid var(--border); animation: slideIn 0.5s ease-out; }
 .live-feed-item:last-child { border-bottom: none; }
 @keyframes slideIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
@@ -99,15 +100,24 @@ nav.scrolled { background: rgba(5,5,7,0.85); backdrop-filter: blur(20px); border
 .live-feed-text .time { color: var(--text-dim); font-size: 12px; }
 .live-feed-badge { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 50px; text-transform: uppercase; letter-spacing: 0.05em; color: #00C853; border: 1px solid rgba(0,200,83,0.3); background: rgba(0,200,83,0.05); }
 
-/* === PSYCHOLOGY SECTIONS === */
+/* === MYSTERY SECTIONS === */
 .psych-section { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; padding: 60px 24px; text-align: center; }
 .psych-section h2 { font-size: clamp(26px, 5vw, 44px); font-weight: 900; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 16px; }
 .psych-section h2 .gold { background: linear-gradient(135deg, #B8860B, #D4AF37, #FFF8DC); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.psych-section p { font-size: clamp(15px, 2vw, 18px); color: var(--text-muted); max-width: 500px; margin: 0 auto; }
+.psych-section p { font-size: clamp(15px, 2vw, 18px); color: var(--text-muted); max-width: 520px; margin: 0 auto; }
+
+/* === COUNTDOWN === */
+.countdown-section { position: relative; z-index: 2; max-width: 500px; margin: 0 auto; padding: 20px 24px; text-align: center; }
+.countdown-bar { display: flex; align-items: center; justify-content: center; gap: 20px; padding: 24px; background: var(--surface); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: 16px; }
+.countdown-unit { text-align: center; }
+.countdown-unit .num { font-size: 32px; font-weight: 900; color: var(--gold); }
+.countdown-unit .label { font-size: 10px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.1em; }
+.countdown-sep { font-size: 28px; font-weight: 700; color: var(--text-dim); margin-top: -8px; }
+.countdown-msg { font-size: 13px; color: var(--text-muted); margin-top: 16px; }
 
 /* === REX HINT === */
-.rex-hint { position: relative; z-index: 2; max-width: 600px; margin: 0 auto; padding: 40px 24px; text-align: center; }
-.rex-card { background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%); border: 1px solid var(--border-bright); border-radius: 20px; padding: 40px 32px; position: relative; overflow: hidden; }
+.rex-hint { position: relative; z-index: 2; max-width: 560px; margin: 0 auto; padding: 40px 24px; text-align: center; }
+.rex-card { background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid var(--border-bright); border-radius: 20px; padding: 40px 32px; position: relative; overflow: hidden; }
 .rex-card::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 50% 50%, rgba(212,175,55,0.06), transparent 60%); animation: rotate 20s linear infinite; }
 @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 .rex-card-content { position: relative; z-index: 1; }
@@ -116,28 +126,33 @@ nav.scrolled { background: rgba(5,5,7,0.85); backdrop-filter: blur(20px); border
 .rex-card p { font-size: 15px; color: var(--text-muted); max-width: 380px; margin: 0 auto; }
 .rex-card .locked { display: inline-block; margin-top: 16px; font-size: 13px; color: var(--text-dim); letter-spacing: 0.05em; }
 
-/* === INVITE LEADERBOARD === */
-.invite-section { position: relative; z-index: 2; max-width: 600px; margin: 0 auto; padding: 40px 24px; }
-.invite-header { text-align: center; margin-bottom: 32px; }
-.invite-header h3 { font-size: clamp(24px, 4vw, 36px); font-weight: 900; letter-spacing: -0.02em; margin-bottom: 8px; }
-.invite-header p { font-size: 14px; color: var(--text-muted); }
-.invite-board { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
-.invite-row { display: flex; align-items: center; gap: 14px; padding: 14px 18px; border-bottom: 1px solid var(--border); transition: all 0.2s; }
+/* === INVITE LEADERBOARD — themed === */
+.invite-section { position: relative; z-index: 2; max-width: 540px; margin: 0 auto; padding: 40px 24px; }
+.invite-header { text-align: center; margin-bottom: 28px; }
+.invite-header h3 { font-size: clamp(22px, 4vw, 34px); font-weight: 900; letter-spacing: -0.02em; margin-bottom: 6px; }
+.invite-header p { font-size: 13px; color: var(--text-muted); letter-spacing: 0.02em; }
+.invite-board { background: var(--surface); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+.invite-row { display: flex; align-items: center; gap: 14px; padding: 14px 18px; border-bottom: 1px solid var(--border); transition: all 0.25s; position: relative; }
 .invite-row:last-child { border-bottom: none; }
-.invite-row:hover { background: var(--surface-2); }
+.invite-row:hover { background: rgba(212,175,55,0.04); }
+.invite-row.you { background: rgba(212,175,55,0.06); border-top: 1px solid var(--border-bright); }
+.invite-row.you::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(to bottom, #D4AF37, #B8860B); }
 .invite-rank { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; }
-.invite-rank.r1 { background: linear-gradient(135deg, #D4AF37, #FFF8DC); color: var(--bg); }
-.invite-rank.r2 { background: linear-gradient(135deg, #C0C0C0, #E8E8E8); color: var(--bg); }
-.invite-rank.r3 { background: linear-gradient(135deg, #CD7F32, #E89B5A); color: var(--bg); }
-.invite-rank.r4 { background: var(--surface-2); color: var(--text-muted); border: 1px solid var(--border); }
+.invite-rank.r1 { background: linear-gradient(135deg, #D4AF37, #FFF8DC); color: #000; box-shadow: 0 0 12px rgba(212,175,55,0.4); }
+.invite-rank.r2 { background: linear-gradient(135deg, #C0C0C0, #E8E8E8); color: #000; }
+.invite-rank.r3 { background: linear-gradient(135deg, #CD7F32, #E89B5A); color: #000; }
+.invite-rank.r4 { background: rgba(18,18,30,0.8); color: var(--text-muted); border: 1px solid var(--border); }
 .invite-name { font-size: 14px; font-weight: 600; flex: 1; }
 .invite-name .anon { color: var(--text-dim); font-weight: 400; }
-.invite-count { font-size: 14px; font-weight: 700; color: var(--gold); }
-.invite-count .label { font-size: 11px; color: var(--text-dim); font-weight: 400; margin-left: 4px; }
+.invite-bar-wrap { flex: 1; max-width: 120px; height: 4px; background: rgba(255,255,255,0.06); border-radius: 50px; overflow: hidden; }
+.invite-bar { height: 100%; background: linear-gradient(to right, #B8860B, #D4AF37); border-radius: 50px; transition: width 1s ease; }
+.invite-count { font-size: 14px; font-weight: 700; color: var(--gold); min-width: 50px; text-align: right; }
+.invite-count .label { font-size: 11px; color: var(--text-dim); font-weight: 400; margin-left: 2px; }
+.invite-reward { font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 50px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gold); border: 1px solid var(--border-bright); background: rgba(212,175,55,0.08); white-space: nowrap; }
 
 /* === SOCIAL ROW === */
 .social-row { position: relative; z-index: 2; display: flex; justify-content: center; gap: 14px; padding: 30px 24px; }
-.social-btn { width: 48px; height: 48px; border-radius: 14px; background: var(--surface); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; transition: all 0.25s; cursor: pointer; }
+.social-btn { width: 48px; height: 48px; border-radius: 14px; background: var(--surface); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; transition: all 0.25s; cursor: pointer; }
 .social-btn:hover { border-color: var(--border-bright); background: var(--surface-2); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
 .social-btn svg { width: 22px; height: 22px; }
 
@@ -153,7 +168,36 @@ footer { position: relative; z-index: 2; border-top: 1px solid var(--border); pa
 .footer-tag { font-size: 12px; color: var(--text-dim); margin-bottom: 20px; }
 .footer-links { display: flex; justify-content: center; gap: 24px; font-size: 13px; color: var(--text-muted); }
 .footer-links a:hover { color: var(--gold); }
+.footer-links a { cursor: pointer; }
 .footer-copy { margin-top: 20px; font-size: 11px; color: rgba(255,255,255,0.2); }
+
+/* === REGISTRATION MODAL === */
+.modal-overlay { display: none; position: fixed; inset: 0; z-index: 9999; align-items: center; justify-content: center; background: rgba(0,0,0,0.8); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); padding: 24px; }
+.modal-overlay.active { display: flex; }
+.modal-card { background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--border-bright); border-radius: 20px; padding: 40px 32px; max-width: 440px; width: 100%; text-align: center; position: relative; animation: modalIn 0.4s ease; }
+@keyframes modalIn { from { opacity: 0; transform: scale(0.95) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+.modal-close { position: absolute; top: 16px; right: 20px; cursor: pointer; color: var(--text-dim); font-size: 24px; transition: color 0.2s; }
+.modal-close:hover { color: var(--text); }
+.modal-title { font-size: 32px; font-weight: 900; background: linear-gradient(135deg, #D4AF37, #FFF8DC); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 6px; }
+.modal-sub { font-size: 14px; color: var(--text-muted); margin-bottom: 28px; }
+.form-field { margin-bottom: 14px; text-align: left; }
+.form-field label { display: block; font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 6px; letter-spacing: 0.05em; text-transform: uppercase; }
+.form-input { width: 100%; padding: 14px 18px; border-radius: 12px; border: 1px solid var(--border); background: rgba(5,5,7,0.6); color: var(--text); font-size: 15px; outline: none; transition: border-color 0.2s; }
+.form-input:focus { border-color: var(--gold); }
+.form-input::placeholder { color: var(--text-dim); }
+.form-row { display: flex; gap: 10px; }
+.form-row .form-field { flex: 1; }
+select.form-input { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23D4AF37' d='M6 8L0 0h12z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; cursor: pointer; }
+.modal-success { display: none; }
+.modal-success.active { display: block; }
+.success-icon { width: 64px; height: 64px; margin: 0 auto 16px; border-radius: 50%; border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center; font-size: 32px; color: var(--gold); }
+.form-note { font-size: 11px; color: var(--text-dim); margin-top: 16px; }
+.form-referral { margin-top: 20px; padding: 12px 16px; background: rgba(212,175,55,0.06); border: 1px solid var(--border); border-radius: 12px; }
+.form-referral label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 6px; }
+.form-referral .ref-link { display: flex; gap: 8px; align-items: center; }
+.form-referral .ref-link input { flex: 1; font-size: 12px; padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border); background: rgba(5,5,7,0.6); color: var(--gold); outline: none; }
+.form-referral .ref-link button { padding: 8px 14px; border-radius: 8px; border: 1px solid var(--gold); background: transparent; color: var(--gold); font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+.form-referral .ref-link button:hover { background: var(--gold); color: var(--bg); }
 
 /* === REVEAL === */
 .reveal { opacity: 1; transform: none; }
@@ -173,6 +217,10 @@ body.reveal-ready .reveal.visible { opacity: 1; transform: translateY(0); transi
   .footer-links { flex-direction: column; gap: 10px; }
   .live-feed-item { padding: 12px 14px; }
   .invite-row { padding: 12px 14px; }
+  .form-row { flex-direction: column; }
+  .countdown-bar { gap: 12px; padding: 18px; }
+  .countdown-unit .num { font-size: 26px; }
+  .invite-bar-wrap { display: none; }
 }
 </style>
 </head>
@@ -184,7 +232,7 @@ body.reveal-ready .reveal.visible { opacity: 1; transform: translateY(0); transi
 <div class="ray"></div>
 <canvas id="goldParticles"></canvas>
 
-<!-- NAV WITH LOGO FLIP -->
+<!-- NAV -->
 <nav id="nav">
   <a href="#" class="logo">
     <span class="logo-img-wrapper">
@@ -195,17 +243,17 @@ body.reveal-ready .reveal.visible { opacity: 1; transform: translateY(0); transi
     </span>
     FORTREX
   </a>
-  <a href="#register" class="nav-cta">Get Access</a>
+  <a href="#" class="nav-cta" onclick="openModal();return false;">Get Access</a>
 </nav>
 
-<!-- HERO — curiosity, no reveal -->
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-badge"><span class="dot"></span> Building something for traders — quietly</div>
+  <div class="hero-badge"><span class="dot"></span> Something is coming. Quietly.</div>
   <img src="https://media.base44.com/images/public/6a79d5cea765bcf565bf27b6/14528f2c1_generated_image.png" alt="FORTREX" class="hero-logo">
-  <h1>The edge every trader wants. <span class="gold">Nobody's giving it to you.</span></h1>
-  <p class="hero-sub">We're not telling you what it is yet. But if you've been trading long enough to feel like something's missing — this is it.</p>
+  <h1>You've been trading long enough to know <span class="gold">when something is off.</span></h1>
+  <p class="hero-sub">The top 1% never share their edge. We're not going to either — not yet. But something is being built. And it's being built for you.</p>
   <div class="hero-cta-row">
-    <a href="#register" class="cta-btn">Claim My Spot &rarr;</a>
+    <a href="#" class="cta-btn" onclick="openModal();return false;">Claim My Spot &rarr;</a>
     <a href="#community" class="cta-btn cta-btn-outline">Join Discord</a>
   </div>
 </section>
@@ -230,22 +278,22 @@ body.reveal-ready .reveal.visible { opacity: 1; transform: translateY(0); transi
   <div class="live-feed" id="liveFeed">
     <div class="live-feed-item">
       <div class="live-feed-avatar">R</div>
-      <div class="live-feed-text"><span class="name">Rohit S.</span> just claimed a spot <span class="time">· 2s ago</span></div>
+      <div class="live-feed-text"><span class="name">Rohit S.</span> just claimed a spot <span class="time">&middot; 2s ago</span></div>
       <span class="live-feed-badge">Confirmed</span>
     </div>
     <div class="live-feed-item">
       <div class="live-feed-avatar">A</div>
-      <div class="live-feed-text"><span class="name">Ahmed K.</span> joined via invite <span class="time">· 14s ago</span></div>
+      <div class="live-feed-text"><span class="name">Ahmed K.</span> joined via invite <span class="time">&middot; 14s ago</span></div>
       <span class="live-feed-badge">Confirmed</span>
     </div>
     <div class="live-feed-item">
       <div class="live-feed-avatar">P</div>
-      <div class="live-feed-text"><span class="name">Priya N.</span> just claimed a spot <span class="time">· 31s ago</span></div>
+      <div class="live-feed-text"><span class="name">Priya N.</span> just claimed a spot <span class="time">&middot; 31s ago</span></div>
       <span class="live-feed-badge">Confirmed</span>
     </div>
     <div class="live-feed-item">
       <div class="live-feed-avatar">D</div>
-      <div class="live-feed-text"><span class="name">David L.</span> joined via invite <span class="time">· 48s ago</span></div>
+      <div class="live-feed-text"><span class="name">David L.</span> joined via invite <span class="time">&middot; 48s ago</span></div>
       <span class="live-feed-badge">Confirmed</span>
     </div>
   </div>
@@ -258,17 +306,38 @@ body.reveal-ready .reveal.visible { opacity: 1; transform: translateY(0); transi
   <div class="line"></div>
 </div>
 
-<!-- PSYCHOLOGY SECTION 1 — recognition -->
+<!-- MYSTERY SECTION 1 -->
 <section class="psych-section reveal">
-  <h2>You spend hours analyzing charts. <span class="gold">When do you get recognized for it?</span></h2>
-  <p>If your skill is real, the world should know. We're building the stage. You bring the performance.</p>
+  <h2>You already know <span class="gold">what's missing.</span></h2>
+  <p>You just haven't found it yet. The tools, the recognition, the edge — it exists. And it's closer than you think.</p>
 </section>
 
-<!-- PSYCHOLOGY SECTION 2 — edge/curiosity -->
+<!-- MYSTERY SECTION 2 -->
 <section class="psych-section reveal">
-  <h2>What if the one thing you've been missing <span class="gold">wasn't a strategy — but a system?</span></h2>
-  <p>A system designed around what traders actually need. Not what brokers tell you that you need.</p>
+  <h2>What if the answer <span class="gold">wasn't another course?</span></h2>
+  <p>No more gurus. No more signals. No more paying for someone else's hindsight. Something different is coming.</p>
 </section>
+
+<!-- COUNTDOWN — creates urgency to come back -->
+<section class="countdown-section reveal">
+  <div class="countdown-bar">
+    <div class="countdown-unit"><div class="num" id="cdD">--</div><div class="label">Days</div></div>
+    <div class="countdown-sep">:</div>
+    <div class="countdown-unit"><div class="num" id="cdH">--</div><div class="label">Hours</div></div>
+    <div class="countdown-sep">:</div>
+    <div class="countdown-unit"><div class="num" id="cdM">--</div><div class="label">Min</div></div>
+    <div class="countdown-sep">:</div>
+    <div class="countdown-unit"><div class="num" id="cdS">--</div><div class="label">Sec</div></div>
+  </div>
+  <div class="countdown-msg">We don't announce dates. But the clock is ticking. Check back tomorrow.</div>
+</section>
+
+<!-- CROWN DIVIDER -->
+<div class="crown-divider">
+  <div class="line"></div>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><path d="M3 18h18M5 8l4 3 3-5 3 5 4-3v8H5V8z"/></svg>
+  <div class="line"></div>
+</div>
 
 <!-- REX HINT -->
 <section class="rex-hint reveal">
@@ -289,32 +358,40 @@ body.reveal-ready .reveal.visible { opacity: 1; transform: translateY(0); transi
   <div class="line"></div>
 </div>
 
-<!-- INVITE & EARN LEADERBOARD -->
+<!-- INVITE LEADERBOARD — themed, subtle -->
 <section class="invite-section reveal">
   <div class="invite-header">
-    <h3>Invite. Climb. <span class="gold" style="background:linear-gradient(135deg,#B8860B,#D4AF37,#FFF8DC);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Earn.</span></h3>
-    <p>Top inviters get early access and exclusive rewards</p>
+    <h3>Bring people in. <span class="gold" style="background:linear-gradient(135deg,#B8860B,#D4AF37,#FFF8DC);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Get rewarded.</span></h3>
+    <p>The more you invite, the higher you climb. Top spots get something special at launch.</p>
   </div>
   <div class="invite-board">
     <div class="invite-row">
       <div class="invite-rank r1">1</div>
       <div class="invite-name">Sandeep R.</div>
-      <div class="invite-count">47<span class="label">invites</span></div>
+      <div class="invite-bar-wrap"><div class="invite-bar" style="width:100%"></div></div>
+      <div class="invite-count">47<span class="label">in</span></div>
+      <span class="invite-reward">VIP</span>
     </div>
     <div class="invite-row">
       <div class="invite-rank r2">2</div>
       <div class="invite-name">Marcus T.</div>
-      <div class="invite-count">38<span class="label">invites</span></div>
+      <div class="invite-bar-wrap"><div class="invite-bar" style="width:80%"></div></div>
+      <div class="invite-count">38<span class="label">in</span></div>
+      <span class="invite-reward">Early</span>
     </div>
     <div class="invite-row">
       <div class="invite-rank r3">3</div>
       <div class="invite-name">Kavya M.</div>
-      <div class="invite-count">31<span class="label">invites</span></div>
+      <div class="invite-bar-wrap"><div class="invite-bar" style="width:66%"></div></div>
+      <div class="invite-count">31<span class="label">in</span></div>
+      <span class="invite-reward">Early</span>
     </div>
-    <div class="invite-row">
+    <div class="invite-row you">
       <div class="invite-rank r4">4</div>
       <div class="invite-name"><span class="anon">Your name here</span></div>
-      <div class="invite-count" style="color:var(--text-dim)">0<span class="label">invites</span></div>
+      <div class="invite-bar-wrap"><div class="invite-bar" style="width:2%"></div></div>
+      <div class="invite-count" style="color:var(--text-dim)">0<span class="label">in</span></div>
+      <span class="invite-reward" style="opacity:0.4">??</span>
     </div>
   </div>
 </section>
@@ -343,7 +420,7 @@ body.reveal-ready .reveal.visible { opacity: 1; transform: translateY(0); transi
   <h2>2,847 traders are already in. <span class="gold" style="background:linear-gradient(135deg,#B8860B,#D4AF37,#FFF8DC);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">You're late.</span></h2>
   <p>Registration is open. It won't be forever.</p>
   <div class="hero-cta-row">
-    <a href="#" class="cta-btn" onclick="document.getElementById('emailModal').style.display='flex';return false;">Claim My Spot &rarr;</a>
+    <a href="#" class="cta-btn" onclick="openModal();return false;">Claim My Spot &rarr;</a>
     <a href="#community" class="cta-btn cta-btn-dark">Join Discord</a>
   </div>
   <div class="urgency">&#9888; Early access closes when we hit 5,000 registrations</div>
@@ -354,26 +431,147 @@ body.reveal-ready .reveal.visible { opacity: 1; transform: translateY(0); transi
   <div class="footer-logo">FORTREX</div>
   <div class="footer-tag">Built for traders. By people who understand the game.</div>
   <div class="footer-links">
-    <a href="#register">Register</a>
+    <a onclick="openModal();return false;" style="cursor:pointer;">Register</a>
     <a href="#community">Discord</a>
-    <a href="https://somilsharma2000.github.io/fortrex-website/faq.html">FAQ</a>
+    <a onclick="return false;" style="cursor:pointer;">Terms</a>
+    <a onclick="return false;" style="cursor:pointer;">Privacy</a>
   </div>
   <div class="footer-copy">&copy; 2026 FORTREX. All rights reserved.</div>
 </footer>
 
-<!-- EMAIL CAPTURE MODAL -->
-<div id="emailModal" style="display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;background:rgba(0,0,0,0.8);backdrop-filter:blur(8px);padding:24px;">
-  <div style="background:var(--surface);border:1px solid var(--border-bright);border-radius:20px;padding:40px 32px;max-width:420px;width:100%;text-align:center;position:relative;">
-    <div style="position:absolute;top:16px;right:20px;cursor:pointer;color:var(--text-dim);font-size:24px;" onclick="document.getElementById('emailModal').style.display='none'">&times;</div>
-    <div style="font-size:36px;font-weight:900;background:linear-gradient(135deg,#D4AF37,#FFF8DC);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px;">You're In.</div>
-    <p style="font-size:14px;color:var(--text-muted);margin-bottom:24px;">Drop your email. We'll send your invite the moment doors open.</p>
-    <input type="email" placeholder="trader@email.com" id="emailInput" style="width:100%;padding:14px 18px;border-radius:50px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:15px;font-family:inherit;outline:none;margin-bottom:16px;">
-    <button onclick="submitEmail()" class="cta-btn" style="width:100%;justify-content:center;">Reserve My Spot &rarr;</button>
-    <p style="font-size:11px;color:var(--text-dim);margin-top:16px;">No spam. Just your invite. That's it.</p>
+<!-- REGISTRATION MODAL -->
+<div class="modal-overlay" id="regModal">
+  <div class="modal-card">
+    <div class="modal-close" onclick="closeModal()">&times;</div>
+
+    <!-- Form view -->
+    <div id="formView">
+      <div class="modal-title">You're In.</div>
+      <p class="modal-sub">Reserve your spot. We'll notify you the moment doors open.</p>
+
+      <div class="form-field">
+        <label>Full Name</label>
+        <input type="text" class="form-input" id="inputName" placeholder="Your name" autocomplete="name">
+      </div>
+
+      <div class="form-row">
+        <div class="form-field" style="flex:0 0 110px;">
+          <label>Code</label>
+          <select class="form-input" id="inputCode">
+            <option value="+91" data-flag="IN">🇮🇳 +91</option>
+            <option value="+1" data-flag="US">🇺🇸 +1</option>
+            <option value="+44" data-flag="GB">🇬🇧 +44</option>
+            <option value="+971" data-flag="AE">🇦🇪 +971</option>
+            <option value="+65" data-flag="SG">🇸🇬 +65</option>
+            <option value="+61" data-flag="AU">🇦🇺 +61</option>
+            <option value="+966" data-flag="SA">🇸🇦 +966</option>
+            <option value="+254" data-flag="KE">🇰🇪 +254</option>
+            <option value="+234" data-flag="NG">🇳🇬 +234</option>
+            <option value="+27" data-flag="ZA">🇿🇦 +27</option>
+            <option value="+880" data-flag="BD">🇧🇩 +880</option>
+            <option value="+92" data-flag="PK">🇵🇰 +92</option>
+            <option value="+60" data-flag="MY">🇲🇾 +60</option>
+            <option value="+977" data-flag="NP">🇳🇵 +977</option>
+            <option value="+94" data-flag="LK">🇱🇰 +94</option>
+            <option value="+968" data-flag="OM">🇴🇲 +968</option>
+            <option value="+974" data-flag="QA">🇶🇦 +974</option>
+            <option value="+965" data-flag="KW">🇰🇼 +965</option>
+            <option value="+966" data-flag="BH">🇧🇭 +973</option>
+            <option value="+62" data-flag="ID">🇮🇩 +62</option>
+            <option value="+90" data-flag="TR">🇹🇷 +90</option>
+            <option value="+49" data-flag="DE">🇩🇪 +49</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Phone Number</label>
+          <input type="tel" class="form-input" id="inputPhone" placeholder="98765 43210" autocomplete="tel">
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label>Email</label>
+        <input type="email" class="form-input" id="inputEmail" placeholder="trader@email.com" autocomplete="email">
+      </div>
+
+      <button class="cta-btn" style="width:100%;justify-content:center;margin-top:6px;" onclick="submitForm()">Reserve My Spot &rarr;</button>
+      <p class="form-note">No spam. Just your invite. That's it.</p>
+    </div>
+
+    <!-- Success view -->
+    <div id="successView" style="display:none;">
+      <div class="success-icon">&#10003;</div>
+      <div class="modal-title">You're In.</div>
+      <p class="modal-sub">Your spot is reserved. We'll text and email you the moment doors open.</p>
+      <div class="form-referral">
+        <label>&#127881; Your invite link — share to climb the board</label>
+        <div class="ref-link">
+          <input type="text" id="refLink" readonly value="">
+          <button onclick="copyRef()">Copy</button>
+        </div>
+      </div>
+      <button class="cta-btn" style="width:100%;justify-content:center;margin-top:20px;" onclick="closeModal()">Done</button>
+    </div>
   </div>
 </div>
 
 <script>
+// === MODAL ===
+function openModal() { document.getElementById('regModal').classList.add('active'); }
+function closeModal() { document.getElementById('regModal').classList.remove('active'); }
+document.getElementById('regModal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+
+function copyRef() {
+  var inp = document.getElementById('refLink');
+  inp.select();
+  try { document.execCommand('copy'); } catch(e) {}
+  var btn = event.target;
+  btn.textContent = 'Copied!';
+  setTimeout(function() { btn.textContent = 'Copy'; }, 2000);
+}
+
+function submitForm() {
+  var name = document.getElementById('inputName').value.trim();
+  var code = document.getElementById('inputCode').value;
+  var phone = document.getElementById('inputPhone').value.trim();
+  var email = document.getElementById('inputEmail').value.trim();
+
+  if (!name) { document.getElementById('inputName').focus(); return; }
+  if (!phone || phone.length < 6) { document.getElementById('inputPhone').focus(); return; }
+  if (!email || email.indexOf('@') === -1) { document.getElementById('inputEmail').focus(); return; }
+
+  var fullPhone = code + ' ' + phone;
+  var btn = event.target;
+  btn.textContent = 'Reserving...';
+
+  // Generate referral code from name
+  var refCode = name.replace(/\s+/g, '').substring(0, 8).toUpperCase() + Math.floor(Math.random() * 900 + 100);
+
+  // Save to WaitlistEntry entity
+  fetch('https://app.base44.com/api/entities/WaitlistEntry', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      data: {
+        email: email,
+        source: 'landingpage',
+        status: 'pending',
+        country: document.getElementById('inputCode').selectedOptions[0].dataset.flag || 'IN'
+      }
+    })
+  }).then(function() {
+    showSuccess(refCode);
+  }).catch(function() {
+    // Still show success — never break UX
+    showSuccess(refCode);
+  });
+}
+
+function showSuccess(refCode) {
+  document.getElementById('formView').style.display = 'none';
+  document.getElementById('successView').style.display = 'block';
+  document.getElementById('refLink').value = 'https://somilsharma2000.github.io/landingpage/?ref=' + refCode;
+}
+
 // === GOLD PARTICLE SYSTEM ===
 var canvas = document.getElementById('goldParticles');
 var ctx = canvas.getContext('2d');
@@ -431,15 +629,15 @@ window.addEventListener('scroll', function() { nav.classList.toggle('scrolled', 
 
 // === REVEAL ===
 document.body.classList.add('reveal-ready');
-setTimeout(function() {
-  document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('visible'); });
-}, 2000);
 if ('IntersectionObserver' in window) {
   var observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
 }
+setTimeout(function() {
+  document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('visible'); });
+}, 2000);
 window.addEventListener('scroll', function() {
   document.querySelectorAll('.reveal:not(.visible)').forEach(function(el) {
     var rect = el.getBoundingClientRect();
@@ -455,7 +653,7 @@ setInterval(function() {
   regEl.textContent = regCount.toLocaleString();
 }, 4000);
 
-// === LIVE FEED — simulate new registrations ===
+// === LIVE FEED ===
 var names = [
   ['Arjun P.', 'A'], ['Fatima Z.', 'F'], ['Ken T.', 'K'], ['Sara M.', 'S'],
   ['Vikram R.', 'V'], ['Lisa C.', 'L'], ['Yusuf A.', 'Y'], ['Nina D.', 'N'],
@@ -464,7 +662,6 @@ var names = [
 ];
 var feedEl = document.getElementById('liveFeed');
 var actions = ['just claimed a spot', 'joined via invite', 'just claimed a spot', 'secured early access'];
-var times = ['just now', '2s ago', '5s ago', '8s ago'];
 
 function addFeedItem() {
   var pair = names[Math.floor(Math.random() * names.length)];
@@ -473,11 +670,10 @@ function addFeedItem() {
   item.className = 'live-feed-item';
   item.innerHTML = '<div class="live-feed-avatar">' + pair[1] + '</div>' +
     '<div class="live-feed-text"><span class="name">' + pair[0] + '</span> ' + action +
-    ' <span class="time">&middot; just now</span></div>' +
+    ' <span class="time">\u00b7 just now</span></div>' +
     '<span class="live-feed-badge">Confirmed</span>';
   feedEl.insertBefore(item, feedEl.firstChild);
   if (feedEl.children.length > 5) feedEl.removeChild(feedEl.lastChild);
-  // Update timestamps
   var spans = feedEl.querySelectorAll('.time');
   spans.forEach(function(s, idx) {
     if (idx === 0) return;
@@ -487,27 +683,34 @@ function addFeedItem() {
 }
 setInterval(addFeedItem, 5000 + Math.random() * 3000);
 
-// === EMAIL SUBMIT ===
-function submitEmail() {
-  var email = document.getElementById('emailInput').value.trim();
-  if (!email || email.indexOf('@') === -1) {
-    alert('Enter a valid email, trader.');
-    return;
-  }
-  // Save to entity
-  var btn = event.target;
-  btn.textContent = 'Saving...';
-  fetch('https://app.base44.com/api/entities/WaitlistEntry', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ data: { email: email, source: 'landingpage', status: 'pending' } })
-  }).then(function() {
-    document.getElementById('emailModal').innerHTML = '<div style="background:var(--surface);border:1px solid var(--border-bright);border-radius:20px;padding:40px 32px;max-width:420px;width:100%;text-align:center;"><div style="font-size:36px;font-weight:900;background:linear-gradient(135deg,#D4AF37,#FFF8DC);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;">You\\'re In.</div><p style="font-size:15px;color:var(--text-muted);margin-bottom:24px;">Your spot is reserved. Check your inbox for confirmation.</p><button onclick="document.getElementById(\'emailModal\').style.display=\'none\'" class="cta-btn" style="justify-content:center;">Done</button></div>';
-  }).catch(function() {
-    // Even on error, show success (don't break UX)
-    document.getElementById('emailModal').innerHTML = '<div style="background:var(--surface);border:1px solid var(--border-bright);border-radius:20px;padding:40px 32px;max-width:420px;width:100%;text-align:center;"><div style="font-size:36px;font-weight:900;background:linear-gradient(135deg,#D4AF37,#FFF8DC);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;">You\\'re In.</div><p style="font-size:15px;color:var(--text-muted);margin-bottom:24px;">Your spot is reserved.</p><button onclick="document.getElementById(\'emailModal\').style.display=\'none\'" class="cta-btn" style="justify-content:center;">Done</button></div>';
-  });
+// === COUNTDOWN — random-ish countdown that resets, creates "come back" urge ===
+// Target: ~14 days from first visit (stored in localStorage)
+var launchKey = 'fortrex_launch_ts';
+var launchTs = localStorage.getItem(launchKey);
+if (!launchTs) {
+  // Set a target 14 days from now
+  launchTs = (Date.now() + 14 * 24 * 60 * 60 * 1000).toString();
+  localStorage.setItem(launchKey, launchTs);
 }
+function updateCountdown() {
+  var diff = parseInt(launchTs) - Date.now();
+  if (diff < 0) {
+    // Reset to 7 more days if expired (keeps urgency alive)
+    launchTs = (Date.now() + 7 * 24 * 60 * 60 * 1000).toString();
+    localStorage.setItem(launchKey, launchTs);
+    diff = parseInt(launchTs) - Date.now();
+  }
+  var d = Math.floor(diff / (1000 * 60 * 60 * 24));
+  var h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  var s = Math.floor((diff % (1000 * 60)) / 1000);
+  document.getElementById('cdD').textContent = String(d).padStart(2, '0');
+  document.getElementById('cdH').textContent = String(h).padStart(2, '0');
+  document.getElementById('cdM').textContent = String(m).padStart(2, '0');
+  document.getElementById('cdS').textContent = String(s).padStart(2, '0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
 </script>
 </body>
 </html>
