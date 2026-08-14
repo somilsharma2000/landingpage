@@ -146,13 +146,17 @@ nav.scrolled{background:rgba(5,5,7,0.85);backdrop-filter:blur(20px);-webkit-back
 .rex-monolith.revealed .rex-drape{opacity:0;transform:translateY(-24px) scale(1.04);pointer-events:none}
 .rex-monolith.revealed .rex-drape-label{opacity:0}
 
-/* Spec badges */
-.rex-specs{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:8px}
-.rex-spec{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:6px;background:rgba(212,175,55,0.03);border:1px solid rgba(212,175,55,0.1);font-size:12px;font-weight:600;color:var(--text-muted);transition:all .3s cubic-bezier(.34,1.56,.64,1);position:relative;overflow:hidden}
-.rex-spec::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(234,179,8,0.12),transparent);transition:left .5s ease}
-.rex-spec:hover::before{left:100%}
-.rex-spec:hover{border-color:rgba(234,179,8,0.35);color:var(--text);transform:translateY(-2px);box-shadow:0 4px 16px rgba(234,179,8,0.1)}
-.rex-spec .spec-icon{font-size:14px}
+
+/* REX HUD */
+.rex-hud{max-width:300px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+.rex-hud-row{display:flex;align-items:center;gap:10px}
+.hud-label{font-size:10px;font-weight:700;letter-spacing:0.12em;color:var(--text-dim);width:70px;text-align:right;text-transform:uppercase}
+.hud-bar{flex:1;height:6px;border-radius:3px;background:rgba(255,255,255,0.04);border:1px solid rgba(212,175,55,0.08);overflow:hidden}
+.hud-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,#B8860B,#D4AF37);transition:width 1.2s cubic-bezier(.34,1.56,.64,1)}
+.hud-fill.hud-live{background:linear-gradient(90deg,#00C853,#00E676);animation:livePulse 2s ease-in-out infinite}
+@keyframes livePulse{0%,100%{opacity:1}50%{opacity:.6}}
+.hud-val{font-size:11px;font-weight:700;color:var(--text-muted);width:50px;text-align:left}
+.hud-val.hud-on{color:#00C853}
 
 .architects-section{position:relative;z-index:2;max-width:560px;margin:0 auto;padding:40px 24px}
 .architects-header{text-align:center;margin-bottom:36px}
@@ -455,7 +459,7 @@ nav{padding:12px 16px}.logo{font-size:16px}.logo-img{width:32px;height:32px}.her
 
 <div class="crown-divider"><div class="line"></div><svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><path d="M3 18h18M5 8l4 3 3-5 3 5 4-3v8H5V8z"/></svg><div class="line"></div></div>
 
-<section class="psych-section reveal"><h2>You already know <span class="gold">what's missing.</span></h2><p>You just haven't found it yet. Something is being built. And it's not like anything you've seen before.</p></section>
+<section class="psych-section reveal"><h2>You already know <span class="gold">what's missing.</span></h2><p>You just haven\'t found it yet. Something is being built. And it's not like anything you've seen before.</p></section>
 <section class="psych-section reveal"><h2>What if the answer <span class="gold">wasn't another course?</span></h2><p>No more gurus. No more signals. No more paying for someone else's hindsight. Something different is coming.</p></section>
 
 <div class="crown-divider"><div class="line"></div><svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><path d="M3 18h18M5 8l4 3 3-5 3 5 4-3v8H5V8z"/></svg><div class="line"></div></div>
@@ -477,18 +481,18 @@ nav{padding:12px 16px}.logo{font-size:16px}.logo-img{width:32px;height:32px}.her
 <p class="rex-core"><span class="gold">REX is neither.</span></p>
 <p class="rex-last">Only one metric determines your allocation. And it is not capital.</p>
 </div>
-<div class="rex-specs">
-<div class="rex-spec"><span class="spec-icon">&#9889;</span> Pure Skill-Driven Allocation</div>
-<div class="rex-spec"><span class="spec-icon">&#128274;</span> Hard-Capped to 10,000 Traders</div>
-<div class="rex-spec"><span class="spec-icon">&#128200;</span> Tier-1 Genesis Multiplier</div>
-<div class="rex-spec"><span class="spec-icon">&#127081;</span> Permanent Founder Status</div>
+<div class="rex-hud">
+<div class="rex-hud-row"><span class="hud-label">CAPACITY</span><div class="hud-bar"><div class="hud-fill" style="width:10%"></div></div><span class="hud-val">10K</span></div>
+<div class="rex-hud-row"><span class="hud-label">PROTOCOL</span><div class="hud-bar"><div class="hud-fill" style="width:5%"></div></div><span class="hud-val">LIVE</span></div>
+<div class="rex-hud-row"><span class="hud-label">MULTIPLIER</span><div class="hud-bar"><div class="hud-fill" style="width:25%"></div></div><span class="hud-val">1.25x</span></div>
+<div class="rex-hud-row"><span class="hud-label">STATUS</span><div class="hud-bar"><div class="hud-fill hud-live" style="width:100%"></div></div><span class="hud-val hud-on">SEALED</span></div>
 </div>
 </section>
 
 <div class="crown-divider"><div class="line"></div><svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><path d="M3 18h18M5 8l4 3 3-5 3 5 4-3v8H5V8z"/></svg><div class="line"></div></div>
 
 <!-- ARCHITECTS LEADERBOARD -->
-<section class="architects-section reveal" id="ambassadors"><div class="architects-header"><h3>The <span class="gold">Architects' Circle</span></h3><p>This isn't a referral program. It's a <strong>construction crew.</strong> The traders who bring others aren't recruiting — they're building something that lasts. And the ones who build the most, own the most.</p></div><div class="architects-tier-row"><div class="architects-tier"><span class="tier-icon">&#128081;</span><span class="tier-name">Founder</span><span class="tier-desc">Top 3 builders</span></div><div class="architects-tier"><span class="tier-icon">&#9881;</span><span class="tier-name">Architect</span><span class="tier-desc">Top 10 builders</span></div><div class="architects-tier"><span class="tier-icon">&#128293;</span><span class="tier-name">Catalyst</span><span class="tier-desc">Five or more</span></div></div><div class="architects-board" id="ambassadorBoard"><div class="architects-empty">The circle is empty. The first architects haven't arrived yet.</div></div></section>
+<section class="architects-section reveal" id="ambassadors"><div class="architects-header"><h3>The <span class="gold">Architects' Circle</span></h3><p>This isn't a referral program. It's a <strong>construction crew.</strong> The traders who bring others aren't recruiting — they're building something that lasts. And the ones who build the most, own the most.</p></div><div class="architects-tier-row"><div class="architects-tier"><span class="tier-icon">&#128081;</span><span class="tier-name">Founder</span><span class="tier-desc">Top 3 builders</span></div><div class="architects-tier"><span class="tier-icon">&#9881;</span><span class="tier-name">Architect</span><span class="tier-desc">Top 10 builders</span></div><div class="architects-tier"><span class="tier-icon">&#128293;</span><span class="tier-name">Catalyst</span><span class="tier-desc">Five or more</span></div></div><div class="architects-board" id="ambassadorBoard"><div class="architects-empty">The circle is empty. The first architects haven\'t arrived yet.</div></div></section>
 
 <!-- SOCIAL ROW -->
 
@@ -561,7 +565,7 @@ function escapeHtml(s){return s.replace(/[&<>"']/g,function(c){return{'&':'&amp;
 function timeAgo(d){var diff=Date.now()-new Date(d).getTime();var m=Math.floor(diff/60000);if(m<1)return'just now';if(m<60)return m+'m ago';var h=Math.floor(m/60);if(h<24)return h+'h ago';return Math.floor(h/24)+'d ago';}
 
 function loadLeaderboard(){var myCode=localStorage.getItem('fortrex_refCode')||'';fetch(API_LEADERBOARD,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({myCode:myCode})}).then(function(res){return res.json();}).then(function(data){if(data.success)renderLeaderboard(data.top||[],data.me);}).catch(function(err){console.log('leaderboard not available');});}
-function renderLeaderboard(top,me){var board=document.getElementById('ambassadorBoard');if(top.length===0&&!me){board.innerHTML='<div class="architects-empty">The circle is empty. The first architects haven't arrived yet.</div>';return;}var html='';var maxCount=top.length>0?top[0].count:1;top.forEach(function(r,i){var rc='r'+Math.min(r.rank,4);var bc=r.rank===1?'founder':(r.rank<=3?'architect':'catalyst');var bt=r.rank===1?'FOUNDER':(r.rank<=3?'ARCHITECT':'CATALYST');var bw=Math.max((r.count/maxCount)*100,5);var dl=(i*0.1)+'s';var yc='';var sl='';if(me&&me.rank===r.rank){yc=' you';}if(r.rank===1)sl=' spotlight';html+='<div class="architects-row'+yc+sl+'" style="animation-delay:'+dl+'"><div class="architects-rank '+rc+'">'+r.rank+'</div><div class="architects-info"><div class="architects-name">'+escapeHtml(r.name)+'</div><div class="architects-bar-wrap"><div class="architects-bar" style="width:'+bw+'%"></div></div></div><div class="architects-count">'+r.count+'<span class="label">brought in</span></div><span class="architects-badge '+bc+'">'+bt+'</span></div>';});if(me&&me.rank===null){var ybw=me.count>0?Math.max((me.count/maxCount)*100,5):2;var yb=me.count>=5?'catalyst':'locked';var ybt=me.count>=5?'CATALYST':'??';html+='<div class="architects-row you" style="animation-delay:'+(top.length*0.1)+'s"><div class="architects-rank r4">?</div><div class="architects-info"><div class="architects-name"><span class="anon">You</span></div><div class="architects-bar-wrap"><div class="architects-bar" style="width:'+ybw+'%"></div></div></div><div class="architects-count" style="color:var(--text-dim)">'+me.count+'<span class="label">brought in</span></div><span class="architects-badge '+yb+'">'+ybt+'</span></div>';}board.innerHTML=html;}
+function renderLeaderboard(top,me){var board=document.getElementById('ambassadorBoard');if(top.length===0&&!me){board.innerHTML='<div class="architects-empty">The circle is empty. The first architects haven\'t arrived yet.</div>';return;}var html='';var maxCount=top.length>0?top[0].count:1;top.forEach(function(r,i){var rc='r'+Math.min(r.rank,4);var bc=r.rank===1?'founder':(r.rank<=3?'architect':'catalyst');var bt=r.rank===1?'FOUNDER':(r.rank<=3?'ARCHITECT':'CATALYST');var bw=Math.max((r.count/maxCount)*100,5);var dl=(i*0.1)+'s';var yc='';var sl='';if(me&&me.rank===r.rank){yc=' you';}if(r.rank===1)sl=' spotlight';html+='<div class="architects-row'+yc+sl+'" style="animation-delay:'+dl+'"><div class="architects-rank '+rc+'">'+r.rank+'</div><div class="architects-info"><div class="architects-name">'+escapeHtml(r.name)+'</div><div class="architects-bar-wrap"><div class="architects-bar" style="width:'+bw+'%"></div></div></div><div class="architects-count">'+r.count+'<span class="label">brought in</span></div><span class="architects-badge '+bc+'">'+bt+'</span></div>';});if(me&&me.rank===null){var ybw=me.count>0?Math.max((me.count/maxCount)*100,5):2;var yb=me.count>=5?'catalyst':'locked';var ybt=me.count>=5?'CATALYST':'??';html+='<div class="architects-row you" style="animation-delay:'+(top.length*0.1)+'s"><div class="architects-rank r4">?</div><div class="architects-info"><div class="architects-name"><span class="anon">You</span></div><div class="architects-bar-wrap"><div class="architects-bar" style="width:'+ybw+'%"></div></div></div><div class="architects-count" style="color:var(--text-dim)">'+me.count+'<span class="label">brought in</span></div><span class="architects-badge '+yb+'">'+ybt+'</span></div>';}board.innerHTML=html;}
 
 /* CONFETTI */
 function fireConfetti(){var c=document.getElementById('confettiCanvas');var cx=c.getContext('2d');c.style.display='block';c.width=window.innerWidth;c.height=window.innerHeight;var conf=[];for(var i=0;i<80;i++){conf.push({x:window.innerWidth/2,y:window.innerHeight/2,vx:(Math.random()-0.5)*12,vy:Math.random()*-12-3,gravity:0.3,life:1,size:Math.random()*4+2,rotation:Math.random()*360,vr:(Math.random()-0.5)*10,color:Math.random()>0.5?'#D4AF37':(Math.random()>0.5?'#FFF8DC':'#B8860B')});}
