@@ -119,6 +119,53 @@ nav.scrolled{background:rgba(6,6,8,0.82);backdrop-filter:blur(24px);-webkit-back
 .hero h1 .gold{background:linear-gradient(135deg,var(--amber-deep),var(--gold),var(--gold-light),var(--gold));background-size:200% 200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:textShimmer 4s ease-in-out infinite;filter:drop-shadow(0 0 12px rgba(212,175,55,0.3))}
 @keyframes textShimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
 .hero-sub{font-size:clamp(14px,1.8vw,17px);color:var(--text-muted);max-width:380px;margin:0 auto var(--sp-7);opacity:0;animation:fadeUp .8s 1s ease forwards;position:relative;z-index:2}
+/* GIANT GHOST BACKGROUND TEXT */
+.hero-ghost-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(120px,28vw,380px);font-weight:900;letter-spacing:-0.05em;color:transparent;-webkit-text-stroke:1px rgba(212,175,55,0.04);text-stroke:1px rgba(212,175,55,0.04);pointer-events:none;z-index:0;white-space:nowrap;animation:ghostFloat 8s ease-in-out infinite;opacity:0;transition:opacity 2s ease}
+.hero-ghost-text.visible{opacity:1}
+@keyframes ghostFloat{0%,100%{transform:translate(-50%,-50%) translateY(0)}50%{transform:translate(-50%,-50%) translateY(-10px)}}
+/* WIREFRAME LOGO GHOST */
+.hero-wireframe{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:300px;height:300px;opacity:0.04;pointer-events:none;z-index:0;animation:wireRotate 30s linear infinite}
+@keyframes wireRotate{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.hero-wireframe svg{width:100%;height:100%}
+/* FLOOR REFLECTION */
+.hero-floor{position:absolute;bottom:0;left:0;right:0;height:30%;background:linear-gradient(to top,rgba(6,6,8,0.8),transparent);pointer-events:none;z-index:0}
+.hero-floor-reflection{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:200px;height:60px;background:radial-gradient(ellipse at center,rgba(212,175,55,0.06),transparent 70%);pointer-events:none;z-index:0;filter:blur(8px);opacity:0.5}
+/* PLASMA ENERGY RINGS */
+.hero-plasma{position:absolute;top:35%;left:50%;transform:translateX(-50%);width:100px;height:100px;pointer-events:none;z-index:1;opacity:0;animation:plasmaFade 4s ease-in-out infinite}
+@keyframes plasmaFade{0%,100%{opacity:0;transform:translateX(-50%) scale(0.5)}50%{opacity:0.3;transform:translateX(-50%) scale(1.2)}}
+.hero-plasma::before,.hero-plasma::after{content:'';position:absolute;inset:0;border-radius:50%;border:1px solid rgba(234,179,8,0.3)}
+.hero-plasma::before{animation:plasmaRing 3s ease-out infinite}
+.hero-plasma::after{animation:plasmaRing 3s ease-out infinite 1.5s}
+@keyframes plasmaRing{0%{transform:scale(0.5);opacity:0.5;border-width:2px}100%{transform:scale(3);opacity:0;border-width:0.5px}}
+/* 3D CRYSTAL TEXT TYPOGRAPHY */
+.hero h1{font-size:clamp(28px,6vw,52px);font-weight:900;line-height:1.1;margin-bottom:var(--sp-4);opacity:0;animation:fadeUp .8s .8s ease forwards;position:relative;z-index:2;text-shadow:0 0 40px rgba(0,0,0,0.8)}
+.hero h1 .gold{background:linear-gradient(135deg,var(--amber-deep) 0%,var(--gold) 30%,var(--gold-light) 50%,var(--gold) 70%,var(--amber-deep) 100%);background-size:200% 200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:textShimmer 4s ease-in-out infinite;filter:drop-shadow(0 0 12px rgba(212,175,55,0.3));position:relative}
+.hero h1 .gold::after{content:attr(data-text);position:absolute;left:0;top:0;width:100%;background:linear-gradient(180deg,rgba(255,248,220,0.15),transparent 50%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;pointer-events:none}
+/* VIGNETTE */
+.hero-vignette{position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse at center,transparent 30%,rgba(6,6,8,0.6) 100%)}
+/* CORNER GRID LINES */
+.hero-grid{position:absolute;inset:0;pointer-events:none;z-index:0;opacity:0.03;background-image:linear-gradient(rgba(212,175,55,1) 1px,transparent 1px),linear-gradient(90deg,rgba(212,175,55,1) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse at center,black 0%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at center,black 0%,transparent 70%)}
+/* ENHANCED PEDESTAL */
+.pedestal{position:relative;width:200px;height:140px;margin:0 auto var(--sp-5);z-index:2}
+.pedestal-base{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:180px;height:10px;background:linear-gradient(90deg,transparent 5%,rgba(212,175,55,0.3) 20%,rgba(234,179,8,0.6) 50%,rgba(212,175,55,0.3) 80%,transparent 95%);border-radius:2px;filter:blur(1px);box-shadow:0 0 20px rgba(234,179,8,0.3)}
+.pedestal-base::before{content:'';position:absolute;top:1px;left:50%;transform:translateX(-50%);width:140px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,248,220,0.4),transparent);border-radius:1px}
+.pedestal-glow{position:absolute;bottom:-30px;left:50%;transform:translateX(-50%);width:240px;height:50px;background:radial-gradient(ellipse,rgba(234,179,8,0.25),transparent 70%);pointer-events:none;animation:pedGlow 4s ease-in-out infinite}
+.pedestal-ring{position:absolute;bottom:2px;left:50%;transform:translateX(-50%);width:160px;height:5px;border-radius:50%;border:1px solid rgba(212,175,55,0.25);animation:ringExpand 3s ease-out infinite}
+.pedestal-ring-2{position:absolute;bottom:2px;left:50%;transform:translateX(-50%);width:160px;height:5px;border-radius:50%;border:1px solid rgba(234,179,8,0.2);animation:ringExpand 3s ease-out infinite 1.5s}
+@keyframes ringExpand{0%{transform:translateX(-50%) scale(0.7);opacity:0.8}100%{transform:translateX(-50%) scale(2);opacity:0}}
+/* ENHANCED VEIL DRAPE */
+.veil-drape{position:absolute;inset:-12px;border-radius:50%;background:conic-gradient(from 0deg,rgba(212,175,55,0.05),rgba(234,179,8,0.15),rgba(212,175,55,0.05),rgba(184,134,11,0.1),rgba(234,179,8,0.15),rgba(212,175,55,0.05));filter:blur(16px);opacity:0.6;animation:drapeShift 8s ease-in-out infinite;pointer-events:none}
+.veil-drape-inner{position:absolute;inset:0;border-radius:var(--r-lg);background:linear-gradient(135deg,rgba(234,179,8,0.05),transparent 30%,transparent 70%,rgba(212,175,55,0.08));filter:blur(6px);opacity:0.7;animation:drapeShift 6s ease-in-out infinite reverse;pointer-events:none}
+/* ENHANCED LOGO (chrome/gold metallic) */
+.logo-img{width:104px;height:104px;border-radius:var(--r-lg);object-fit:cover;box-shadow:0 8px 40px rgba(212,175,55,0.3),0 0 0 1px rgba(212,175,55,0.2),inset 0 1px 0 rgba(255,248,220,0.1);transition:transform var(--t-slow),box-shadow var(--t-base);will-change:transform;position:relative;z-index:2}
+.logo-veil:hover .logo-img{box-shadow:0 16px 80px rgba(234,179,8,0.5),0 0 0 1px rgba(212,175,55,0.4),inset 0 1px 0 rgba(255,248,220,0.2)}
+.logo-veil{width:104px;height:104px}
+.logo-wrap{width:104px;height:104px}
+/* ENHANCED LENS FLARE */
+.hero-flare{position:absolute;top:30%;left:50%;transform:translateX(-50%);width:95%;max-width:700px;height:2px;background:linear-gradient(90deg,transparent,rgba(250,204,21,0.4),rgba(255,248,220,0.8),rgba(250,204,21,0.4),transparent);pointer-events:none;z-index:0;animation:flareSweep 6s ease-in-out infinite;filter:blur(1.5px);opacity:0}
+.hero-flare-2{position:absolute;top:30%;left:50%;transform:translateX(-50%);width:50%;max-width:400px;height:12px;background:radial-gradient(ellipse,rgba(234,179,8,0.18),transparent);pointer-events:none;z-index:0;animation:flareSweep 6s ease-in-out infinite 0.7s;filter:blur(10px);opacity:0}
+.hero-flare-3{position:absolute;top:30%;left:50%;transform:translateX(-50%);width:15%;max-width:120px;height:3px;background:linear-gradient(90deg,transparent,rgba(255,248,220,0.6),transparent);pointer-events:none;z-index:0;animation:flareSweep 6s ease-in-out infinite 0.3s;filter:blur(0.5px);opacity:0}
+
 /* GENESIS INDICATOR */
 .genesis-indicator{display:none;align-items:center;gap:10px;padding:7px var(--sp-4);border-radius:var(--r-pill);background:rgba(16,185,129,0.05);border:1px solid rgba(16,185,129,0.15);margin-bottom:var(--sp-4);cursor:pointer;transition:all var(--t-base);position:relative;z-index:2}
 .genesis-indicator:hover{background:rgba(16,185,129,0.1);transform:scale(1.02)}
@@ -353,16 +400,25 @@ footer{border-top:1px solid var(--border);padding:var(--sp-6);text-align:center;
 <!-- ===== CINEMATIC HERO ===== -->
 <section class="hero">
   <!-- Background FX layers -->
+  <div class="hero-grid"></div>
+  <div class="hero-ghost-text" id="heroGhostText">FORTREX</div>
+  <div class="hero-wireframe" id="heroWireframe"><svg viewBox="0 0 100 100" fill="none" stroke="rgba(212,175,55,1)" stroke-width="0.3"><circle cx="50" cy="50" r="48"/><circle cx="50" cy="50" r="36"/><circle cx="50" cy="50" r="24"/><circle cx="50" cy="50" r="12"/><line x1="2" y1="50" x2="98" y2="50"/><line x1="50" y1="2" x2="50" y2="98"/><line x1="15" y1="15" x2="85" y2="85"/><line x1="85" y1="15" x2="15" y2="85"/><polygon points="50,15 80,35 80,65 50,85 20,65 20,35"/><rect x="30" y="30" width="40" height="40" rx="5" transform="rotate(45 50 50)"/></svg></div>
   <div class="hero-candles" id="heroCandles"></div>
   <div class="hero-rim-light"></div>
   <div class="hero-smoke"></div>
   <div class="hero-flare"></div>
   <div class="hero-flare-2"></div>
+  <div class="hero-flare-3"></div>
+  <div class="hero-plasma"></div>
   <div class="hero-starfield" id="heroStarfield"></div>
+  <div class="hero-vignette"></div>
+  <div class="hero-floor"></div>
+  <div class="hero-floor-reflection"></div>
   <!-- Pedestal + Veiled Logo -->
   <div class="pedestal">
     <div class="pedestal-glow"></div>
     <div class="pedestal-ring"></div>
+    <div class="pedestal-ring-2"></div>
     <div class="pedestal-base"></div>
   </div>
   <div class="logo-veil" id="logoWrap" onclick="scrollToCard()">
@@ -373,7 +429,7 @@ footer{border-top:1px solid var(--border);padding:var(--sp-6);text-align:center;
     <img src="https://media.base44.com/images/public/6a79d5cea765bcf565bf27b6/14528f2c1_generated_image.png" alt="FORTREX" class="logo-img">
   </div>
   <div class="hero-badge"><span class="dot"></span> By invitation only</div>
-  <h1>Something is coming.<br><span class="gold">10,000 seats. Not one more.</span></h1>
+  <h1>Something is coming.<br><span class="gold" data-text="10,000 seats. Not one more.">10,000 seats. Not one more.</span></h1>
   <p class="hero-sub">If you know, you know. If you don't &mdash; you will soon enough.</p>
 
   <div class="genesis-indicator" id="genesisIndicator" onclick="openModal();return false">
@@ -557,6 +613,9 @@ function buildCandles(){var c=document.getElementById('heroCandles');if(!c)retur
 /* STARFIELD */
 function buildStars(){var s=document.getElementById('heroStarfield');if(!s)return;var html='';for(var i=0;i<50;i++){html+='<div class="hero-star" style="top:'+Math.random()*100+'%;left:'+Math.random()*100+'%;animation-delay:'+Math.random()*3+'s;animation-duration:'+(2+Math.random()*3)+'s"></div>';}s.innerHTML=html;}
 buildCandles();buildStars();
+
+/* GHOST TEXT REVEAL */
+setTimeout(function(){var g=document.getElementById('heroGhostText');if(g)g.classList.add('visible');},1500);
 /* SCROLL REVEAL + NAV SCROLL */
 var ro=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting)en.target.classList.add('visible');});},{threshold:0.12});document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el);});
 window.addEventListener('scroll',function(){var n=document.getElementById('nav');if(window.scrollY>40)n.classList.add('scrolled');else n.classList.remove('scrolled');});
