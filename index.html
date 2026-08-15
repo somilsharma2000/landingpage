@@ -17,11 +17,10 @@ img{max-width:100%;display:block}
 input,button{font-family:inherit;font-size:16px}
 button{border:none;cursor:pointer;background:none;color:inherit}
 
-/* SCROLL REVEAL */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1)}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
-/* LOGO EFFECT */
+/* LOGO */
 .logo-wrap{perspective:300px;position:relative;width:72px;height:72px;margin:0 auto 36px}
 .logo-glow{position:absolute;inset:-20px;border-radius:50%;background:radial-gradient(circle,rgba(212,175,55,0.08),transparent 70%);opacity:0;transition:opacity .5s;pointer-events:none}
 .logo-wrap:hover .logo-glow{opacity:1}
@@ -33,10 +32,10 @@ button{border:none;cursor:pointer;background:none;color:inherit}
 .logo-particles{position:absolute;inset:-20px;pointer-events:none}
 
 /* HERO */
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px 60px}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px 50px}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:5px 14px;border-radius:50px;font-size:11px;font-weight:500;color:var(--text-dim);background:var(--surface);border:1px solid var(--border);margin-bottom:28px;opacity:0;animation:fadeUp .7s .4s ease forwards}
 .hero-badge .dot{width:5px;height:5px;border-radius:50%;background:var(--gold);animation:dotPulse 2s ease-in-out infinite}
-@keyframes dotPulse{0%,100%{opacity:1;50%{opacity:.3}}}
+@keyframes dotPulse{0%,100%{opacity:1}50%{opacity:.3}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 .hero h1{font-size:clamp(26px,5.5vw,46px);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:18px;opacity:0;animation:fadeUp .8s .6s ease forwards}
 .hero h1 .gold{background:linear-gradient(135deg,var(--gold-deep),var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -54,19 +53,48 @@ button{border:none;cursor:pointer;background:none;color:inherit}
 .signup-btn:disabled{opacity:.5;cursor:wait}
 .signup-note{font-size:12px;color:var(--text-dim);margin-top:14px;opacity:0;animation:fadeUp .8s 1.2s ease forwards}
 
-/* COUNTER */
-.counter{margin-top:48px;opacity:0;animation:fadeUp .8s 1.4s ease forwards}
-.counter-num{font-size:clamp(32px,6vw,48px);font-weight:900;letter-spacing:-0.04em;background:linear-gradient(135deg,var(--gold-deep),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
-.counter-label{font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim);margin-top:4px}
-.counter-bar{max-width:200px;height:3px;border-radius:2px;background:var(--surface);margin:12px auto 0;overflow:hidden}
-.counter-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--gold-deep),var(--gold));width:0;transition:width 1.5s cubic-bezier(.16,1,.3,1)}
-
 /* GENESIS INDICATOR */
 .genesis-indicator{display:inline-flex;align-items:center;gap:10px;padding:7px 16px;border-radius:50px;background:rgba(0,200,83,0.05);border:1px solid rgba(0,200,83,0.15);margin-bottom:24px;cursor:pointer;transition:all .3s;opacity:0;animation:fadeUp .8s .5s ease forwards}
 .genesis-indicator:hover{background:rgba(0,200,83,0.08)}
 .gi-dot{width:7px;height:7px;border-radius:50%;background:#00C853;box-shadow:0 0 6px #00C853;animation:dotPulse 1.5s ease-in-out infinite}
 .gi-text{font-size:12px;font-weight:600;color:var(--text-muted)}
 .gi-text span{color:#00C853;font-weight:700}
+
+/* LIVE TABLE */
+.live-table-section{width:100%;max-width:520px;margin:48px auto 0;opacity:0;animation:fadeUp .8s 1.4s ease forwards}
+.lt-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding:0 4px}
+.lt-title{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim)}
+.lt-live{display:flex;align-items:center;gap:5px;font-size:10px;font-weight:700;color:#00C853}
+.lt-live .dot{width:6px;height:6px;border-radius:50%;background:#00C853;box-shadow:0 0 6px #00C853;animation:dotPulse 1.5s ease-in-out infinite}
+.lt-table{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--surface)}
+.lt-row-header{display:flex;align-items:center;padding:10px 16px;border-bottom:1px solid var(--border);font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);gap:8px}
+.lt-col-num{width:50px;text-align:center}
+.lt-col-name{flex:1}
+.lt-col-time{width:70px;text-align:right}
+.lt-col-invite{width:50px;text-align:center}
+.lt-rows{max-height:280px;overflow-y:auto}
+.lt-rows::-webkit-scrollbar{width:3px}
+.lt-rows::-webkit-scrollbar-track{background:transparent}
+.lt-rows::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.lt-row{display:flex;align-items:center;padding:11px 16px;border-bottom:1px solid rgba(255,255,255,0.03);gap:8px;animation:rowIn .5s cubic-bezier(.16,1,.3,1) forwards;opacity:0;transform:translateY(-8px)}
+@keyframes rowIn{to{opacity:1;transform:translateY(0)}}
+.lt-row:last-child{border-bottom:none}
+.lt-row:hover{background:rgba(212,175,55,0.03)}
+.lt-num{width:50px;text-align:center;font-size:12px;font-weight:800;color:var(--gold)}
+.lt-name{flex:1;font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px}
+.lt-avatar{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,rgba(212,175,55,0.12),rgba(212,175,55,0.04));border:1px solid var(--border-gold);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:var(--gold);flex-shrink:0}
+.lt-time{width:70px;text-align:right;font-size:11px;color:var(--text-dim)}
+.lt-invite{width:50px;text-align:center}
+.lt-invite-badge{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:6px;font-size:10px;font-weight:700}
+.lt-invite-badge.yes{background:rgba(0,200,83,0.1);color:#00C853;border:1px solid rgba(0,200,83,0.2)}
+.lt-invite-badge.no{background:rgba(255,255,255,0.03);color:var(--text-dim);border:1px solid var(--border)}
+.lt-empty{text-align:center;padding:40px 20px;color:var(--text-dim);font-size:13px}
+.lt-footer{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-top:1px solid var(--border);font-size:11px}
+.lt-seats{color:var(--text-dim)}
+.lt-seats strong{color:var(--gold);font-weight:800}
+.lt-bar{flex:1;height:2px;border-radius:1px;background:var(--surface);margin:0 14px;overflow:hidden}
+.lt-bar-fill{height:100%;border-radius:1px;background:linear-gradient(90deg,var(--gold-deep),var(--gold));width:0;transition:width 1.5s cubic-bezier(.16,1,.3,1)}
+.lt-remaining{color:var(--text-dim);font-weight:600;white-space:nowrap}
 
 /* SECTIONS */
 .section{max-width:540px;margin:0 auto;padding:70px 24px;text-align:center}
@@ -75,10 +103,10 @@ button{border:none;cursor:pointer;background:none;color:inherit}
 .section p{font-size:clamp(15px,2vw,17px);color:var(--text-muted);max-width:380px;margin:0 auto;line-height:1.7}
 .section-divider{width:40px;height:1px;background:linear-gradient(90deg,transparent,var(--border-gold),transparent);margin:0 auto}
 
-/* REX TEASER */
+/* REX */
 .rex-teaser{max-width:520px;margin:0 auto;padding:70px 24px;text-align:center;position:relative}
 .rex-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);opacity:.5;margin-bottom:20px}
-.rex-word{font-family:'Inter',sans-serif;font-size:clamp(48px,10vw,80px);font-weight:900;letter-spacing:-0.05em;background:linear-gradient(135deg,var(--gold-deep),var(--gold),var(--gold-light),var(--gold-deep));background-size:200% 200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s ease-in-out infinite;line-height:1}
+.rex-word{font-size:clamp(48px,10vw,80px);font-weight:900;letter-spacing:-0.05em;background:linear-gradient(135deg,var(--gold-deep),var(--gold),var(--gold-light),var(--gold-deep));background-size:200% 200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s ease-in-out infinite;line-height:1}
 @keyframes shimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
 .rex-line{font-size:clamp(16px,2.5vw,20px);font-weight:700;margin:16px 0;color:var(--text)}
 .rex-sub{font-size:clamp(13px,1.8vw,15px);color:var(--text-muted);max-width:320px;margin:0 auto;line-height:1.7}
@@ -89,7 +117,7 @@ button{border:none;cursor:pointer;background:none;color:inherit}
 .social-row{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
 .social-btn{width:48px;height:48px;border-radius:14px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:all .35s cubic-bezier(.16,1,.3,1);cursor:pointer}
 .social-btn:hover{transform:translateY(-3px) scale(1.05);border-color:var(--border-gold)}
-.social-btn svg{width:22px;height:22px;transition:transform .3s}
+.social-btn svg{width:22px;height:22px}
 
 /* FINAL CTA */
 .final-cta{text-align:center;padding:80px 24px 100px}
@@ -98,7 +126,6 @@ button{border:none;cursor:pointer;background:none;color:inherit}
 .final-cta p{font-size:15px;color:var(--text-muted);margin-bottom:32px}
 .urgency{font-size:13px;color:var(--gold);margin-top:16px;letter-spacing:0.05em}
 
-/* FOOTER */
 footer{border-top:1px solid var(--border);padding:32px;text-align:center}
 .footer-logo{font-size:15px;font-weight:800;margin-bottom:4px;color:var(--text-muted)}
 .footer-copy{font-size:11px;color:var(--text-dim)}
@@ -146,13 +173,15 @@ footer{border-top:1px solid var(--border);padding:32px;text-align:center}
   .hero{min-height:auto;padding:100px 20px 50px}
   .social-btn{width:42px;height:42px}
   .social-btn svg{width:18px;height:18px}
+  .lt-col-invite{display:none}
+  .lt-invite{display:none}
+  .lt-rows{max-height:240px}
 }
 </style>
 </head>
 <body>
 <canvas id="confettiCanvas"></canvas>
 
-<!-- PORTAL BAR -->
 <div class="portal-bar" id="portalBar">
   <div class="portal-stat"><span class="val" id="portalNum">#—</span><span class="label">Member</span></div>
   <div class="portal-divider"></div>
@@ -183,11 +212,28 @@ footer{border-top:1px solid var(--border);padding:32px;text-align:center}
   </div>
   <p class="signup-note">No spam. No signals. Just early access when doors open.</p>
 
-  <div class="counter">
-    <div class="counter-num" id="capNumber">0</div>
-    <div class="counter-label">Seats Claimed</div>
-    <div class="counter-bar"><div class="counter-fill" id="counterFill"></div></div>
-    <div style="font-size:11px;color:var(--text-dim);margin-top:8px;">of 10,000</div>
+  <!-- LIVE TABLE -->
+  <div class="live-table-section" id="liveTableSection">
+    <div class="lt-header">
+      <div class="lt-title">Live Registrations</div>
+      <div class="lt-live"><span class="dot"></span> LIVE</div>
+    </div>
+    <div class="lt-table">
+      <div class="lt-row-header">
+        <div class="lt-col-num">Seat</div>
+        <div class="lt-col-name">Trader</div>
+        <div class="lt-col-time">Joined</div>
+        <div class="lt-col-invite">Invite</div>
+      </div>
+      <div class="lt-rows" id="ltRows">
+        <div class="lt-empty">Waiting for the first traders to claim their seats...</div>
+      </div>
+      <div class="lt-footer">
+        <div class="lt-seats"><strong id="ltSeatsClaimed">0</strong> / 10,000</div>
+        <div class="lt-bar"><div class="lt-bar-fill" id="ltBarFill"></div></div>
+        <div class="lt-remaining"><span id="ltRemaining">10,000</span> left</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -204,7 +250,7 @@ footer{border-top:1px solid var(--border);padding:32px;text-align:center}
 
 <div class="section-divider"></div>
 
-<!-- REX TEASER -->
+<!-- REX -->
 <section class="rex-teaser reveal">
   <div class="rex-eyebrow">A New Asset Class</div>
   <div class="rex-word">REX</div>
@@ -272,28 +318,26 @@ var API_COUNT='https://arlo-65bf27b6.base44.app/functions/getWaitlistCount';
 var API_MEMBER='https://arlo-65bf27b6.base44.app/functions/getMemberStatus';
 var isSubmitting=false;
 var formOpenTime=Date.now();
+var lastRegCount=0;
 
-/* === DISCORD LINK (replace later) === */
+/* DISCORD LINK — replace later */
 var DISCORD_URL='#';
 document.getElementById('socialDiscord').href=DISCORD_URL;
 document.getElementById('socialDiscord').target='_blank';
 
-/* ESC + overlay close */
+/* ESC + overlay */
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
 document.getElementById('passModal').addEventListener('click',function(e){if(e.target===this)closeModal();});
 
-/* SCROLL TO SIGNUP */
-function scrollToSignup(){var e=document.getElementById('signupBox');e.scrollIntoView({behavior:'smooth'});setTimeout(function(){document.getElementById('inputEmail').focus();},500);}
+function scrollToSignup(){document.getElementById('signupBox').scrollIntoView({behavior:'smooth'});setTimeout(function(){document.getElementById('inputEmail').focus();},500);}
 
-/* === LOGO PARTICLE BURST === */
+/* LOGO PARTICLES */
 var lpCvs=document.getElementById('logoParticles');
 var lpCtx=lpCvs.getContext('2d');
 lpCvs.width=112;lpCvs.height=112;
 var lpParticles=[];
 document.getElementById('logoWrap').addEventListener('mouseenter',function(){
-  for(var i=0;i<20;i++){
-    lpParticles.push({x:56,y:56,vx:(Math.random()-0.5)*6,vy:(Math.random()-0.5)*6-1,life:1,r:Math.random()*2+1,color:Math.random()>0.5?'212,175,55':'255,248,220'});
-  }
+  for(var i=0;i<20;i++){lpParticles.push({x:56,y:56,vx:(Math.random()-0.5)*6,vy:(Math.random()-0.5)*6-1,life:1,r:Math.random()*2+1,color:Math.random()>0.5?'212,175,55':'255,248,220'});}
 });
 function animateLP(){
   lpCtx.clearRect(0,0,112,112);
@@ -306,7 +350,7 @@ function animateLP(){
 }
 animateLP();
 
-/* === SUBMIT === */
+/* SUBMIT */
 function doSubmit(emailInput,btn){
   if(isSubmitting)return;
   isSubmitting=true;
@@ -325,7 +369,7 @@ function doSubmit(emailInput,btn){
       emailInput.value='';
       fireConfetti();
       openModal();
-      loadRealCount();
+      loadTable();
       loadMemberStatus();
     }else{
       isSubmitting=false;btn.textContent='Get Access';btn.disabled=false;
@@ -336,11 +380,11 @@ function doSubmit(emailInput,btn){
 function submitForm(){doSubmit(document.getElementById('inputEmail'),document.getElementById('submitBtn'));}
 function submitForm2(){doSubmit(document.getElementById('inputEmail2'),document.getElementById('submitBtn2'));}
 
-/* === MODAL === */
+/* MODAL */
 function openModal(){var m=document.getElementById('passModal');m.classList.add('show');if(localStorage.getItem('fortrex_registered'))loadMemberStatus();}
 function closeModal(){document.getElementById('passModal').classList.remove('show');}
 
-/* === MEMBER STATUS === */
+/* MEMBER STATUS */
 function loadMemberStatus(){
   var email=localStorage.getItem('fortrex_email')||'';
   var code=localStorage.getItem('fortrex_refCode')||'';
@@ -359,19 +403,57 @@ function loadMemberStatus(){
   }).catch(function(){});
 }
 
-/* === COUNTER === */
-function loadRealCount(){
+/* LIVE TABLE */
+function timeAgo(dateStr){
+  var d=new Date(dateStr);
+  var diff=Date.now()-d.getTime();
+  var mins=Math.floor(diff/60000);
+  if(mins<1)return 'now';
+  if(mins<60)return mins+'m';
+  var hrs=Math.floor(mins/60);
+  if(hrs<24)return hrs+'h';
+  var days=Math.floor(hrs/24);
+  return days+'d';
+}
+function escapeHtml(s){return s.replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+
+function loadTable(){
   fetch(API_COUNT).then(function(r){return r.json();}).then(function(data){
-    if(data.success){
-      var c=data.count||0;
-      document.getElementById('capNumber').textContent=c.toLocaleString();
-      var pct=Math.min((c/10000)*100,100);
-      document.getElementById('counterFill').style.width=pct+'%';
+    if(!data.success)return;
+    var count=data.count||0;
+    var remaining=data.remaining||Math.max(0,10000-count);
+    var pct=Math.min((count/10000)*100,100);
+    document.getElementById('ltSeatsClaimed').textContent=count.toLocaleString();
+    document.getElementById('ltRemaining').textContent=remaining.toLocaleString();
+    document.getElementById('ltBarFill').style.width=pct+'%';
+
+    var rowsEl=document.getElementById('ltRows');
+    var recent=data.recent||[];
+    if(recent.length===0){
+      rowsEl.innerHTML='<div class="lt-empty">Waiting for the first traders to claim their seats...</div>';
+      return;
     }
+    var html='';
+    recent.forEach(function(r,i){
+      var name=r.name||'trader';
+      var initials=name.charAt(0).toUpperCase();
+      var seatNum=count-i;
+      var time=timeAgo(r.joinedDate);
+      var viaInvite=r.viaInvite;
+      html+='<div class="lt-row" style="animation-delay:'+(i*0.08)+'s">';
+      html+='<div class="lt-num">#'+seatNum+'</div>';
+      html+='<div class="lt-name"><div class="lt-avatar">'+initials+'</div>'+escapeHtml(name.length>16?name.substring(0,16)+'…':name)+'</div>';
+      html+='<div class="lt-time">'+time+'</div>';
+      html+='<div class="lt-invite">';
+      if(viaInvite){html+='<span class="lt-invite-badge yes">✓</span>';}
+      else{html+='<span class="lt-invite-badge no">—</span>';}
+      html+='</div></div>';
+    });
+    rowsEl.innerHTML=html;
   }).catch(function(){});
 }
 
-/* === SHARE === */
+/* SHARE */
 function copyReferralLink(){
   var refEl=document.getElementById('passRefLink');
   var refCode=refEl?refEl.textContent.split('ref=')[1]||'':'';
@@ -390,7 +472,7 @@ function shareToTwitter(){
   window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent('Just secured my spot. 10,000 seats. Not one more.')+'&url='+encodeURIComponent(url),'_blank');
 }
 
-/* === CONFETTI === */
+/* CONFETTI */
 function fireConfetti(){
   var c=document.getElementById('confettiCanvas');c.style.display='block';
   c.width=window.innerWidth;c.height=window.innerHeight;
@@ -400,14 +482,14 @@ function fireConfetti(){
   a();
 }
 
-/* === SCROLL REVEAL === */
+/* SCROLL REVEAL */
 var ro=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting)en.target.classList.add('visible');});},{threshold:0.12});
 document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el);});
 
-/* === INIT === */
+/* INIT */
 if(localStorage.getItem('fortrex_registered')){loadMemberStatus();}
-loadRealCount();
-setInterval(loadRealCount,30000);
+loadTable();
+setInterval(loadTable,20000);
 setInterval(function(){if(localStorage.getItem('fortrex_registered'))loadMemberStatus();},30000);
 </script>
 </body>
